@@ -1,0 +1,16 @@
+<section class="d-flex flex-column align-items-start justify-content-start shadow-sm p-2">
+    <section class="align-self-end justify-self-end">
+        <span class="primary-text date">{{date}}</span>
+    </section>
+    <section>
+        <section>
+            <span>{{body}}</span>
+        </section>
+    </section>
+
+    <section class="d-flex align-items-center justify-content-end">
+        
+        <a class="clickable p-2 rounded shadow-sm" (click)="editAnnouncement()">Edit</a>
+        <a class="clickable coral p-2 rounded shadow-sm m-1" (click)="deleteAnnouncement()">Delete</a>
+    </section>
+</section>

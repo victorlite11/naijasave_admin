@@ -1,0 +1,28 @@
+<section (click)="navigateToChangeContributorOverseer()" class="req d-flex align-items-start justify-content-between shadow-sm p-2">
+
+    <!-- Contributor Details-->
+    <section class="contributor-details d-flex align-items-center justify-content-start">
+      <!-- avatar -->
+      <div class="avatar-placeholder shadow mr-2"></div>
+
+      <!-- Contributor over details details -->
+      <section *ngIf="overseer.identity == 'contributor'" class="d-flex align-self-center justify-content-center">
+        <p class="contributor">
+          <span class="name pb-1">{{overseer.name!!}}</span><br>
+          <span class="account-type">
+            <span class="type-text">{{overseer.phoneNumber!!}}</span>
+          </span>
+        </p>
+      </section>
+
+      <section *ngIf="overseer.identity == 'admin'" class="d-flex align-self-center justify-content-center">
+        <p class="contributor">
+          <span class="name pb-1">{{overseer.name!!}}</span><br>
+          <span class="account-type">
+            <span class="type-text">{{overseer.username!!}}</span>
+          </span>
+        </p>
+      </section>
+    </section>
+
+</section>

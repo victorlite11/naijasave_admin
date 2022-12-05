@@ -1,0 +1,29 @@
+a.clickable {
+    font-size: .9em;
+    cursor: pointer;
+    text-align: end;
+    font-family: source-sans-pro-regular;
+    text-decoration: none;
+    color : #f55f5fd2;
+    padding: .8em;
+}
+
+table {
+    tr {
+        * {
+            font-family: source-sans-pro-light;
+        }
+    }
+}
+
+
+.title {
+    font-size:  1.2em !important;
+    margin-bottom: .2em !important;
+    margin-top: 1em !important;
+}
+
+.total {
+    font-family: source-sans-pro-bold;
+    color: rgba(24, 23, 23, 0.63);
+}

@@ -1,0 +1,36 @@
+<app-header [title]="'Contributors'"></app-header>
+
+<main class="body shadow pull-up-3">
+    <mat-spinner *ngIf="countingContributors" [diameter]="20" mode="indeterminate"></mat-spinner>
+
+    <section class="toolbar d-flex align-items-center justify-content-end">
+      <p class="key-value-text"><span>Total Contributors:</span> <span>{{contributorsCount.total}}</span></p>
+  </section>
+
+  <section class="toolbar d-flex align-items-center">
+        
+    <a class="clickable p-2 rounded shadow-sm" (click)="openSearchPortal()">Search</a>
+    <a class="clickable coral p-2 rounded shadow-sm" (click)="createContributor()">Add new contributor</a>
+  </section>
+
+  <section (click)="openSuperContributors()" class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+    <span class="p-2">Super Contributors</span>
+    <span class="p-2 d-flex align-items-center">{{contributorsCount.supers}}  <i class="pi pi-arrow-right ml-2 pl-2"></i></span>
+</section>
+
+    <section (click)="openSubContributors()" class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Sub Contributors</span>
+        <span class="p-2 d-flex align-items-center">{{contributorsCount.subs}}  <i class="pi pi-arrow-right ml-2 pl-2"></i></span>
+    </section>
+
+    <section (click)="openInvestors()" class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Investors</span>
+        <span class="p-2 d-flex align-items-center">{{contributorsCount.investors}}  <i class="pi pi-arrow-right ml-2 pl-2"></i></span>
+    </section>
+
+    <section (click)="openContributors()" class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+      <span class="p-2">Contributors</span>
+      <span class="p-2 d-flex align-items-center">{{contributorsCount.contributors}}  <i class="pi pi-arrow-right ml-2 pl-2"></i></span>
+  </section>
+</main>
+<app-footer></app-footer>

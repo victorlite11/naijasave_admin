@@ -1,0 +1,96 @@
+<app-header [title]="'Privilege'"></app-header>
+
+<main class="body shadow pull-up-3">
+    <mat-spinner *ngIf="fetchingPrivilege || updatingPrivilege" [diameter]="20" mode="indeterminate"></mat-spinner>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Credit Trading Balance</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canCreditTradingBalance" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Credit Trading Balance</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canCreditTradingBalance" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+    
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Credit Others & Contributors</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canCreditOthers" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Change Contributors Overseers</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canChangeContributorsOverseer" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Use SMS Alert</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canSendSMS" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Debit Others With Checks</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canDebitOthersWithChecks" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can  Elevate Contributors Privilege</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canMakeContributorsSuperOrSub" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Debit Others Without Checks</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canDebitOthersWithoutChecks" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Debit Trading Balance</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canDebitTradingBalance" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Accept Contributors Requests</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canAcceptContributorsRequests" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Reject Contributors Requests</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canRejectContributorsRequests" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can See Company Profile</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canSeeCompanyProfile" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Accept Signup Requests</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canAcceptSignupRequests" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Accept Deposit Requests</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canAcceptDepositRequests" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Accept Withdrawal Requests</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canAcceptWithdrawalRequests" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Remove Contributors</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canRemoveContributors" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Create Account For Contributors</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canCreateAccountForContributors" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Can Edit Signup Request Data</span>
+        <span class="p-2 d-flex align-items-center"><mat-slide-toggle [(ngModel)]="privilege.canEditSignupRequestData" (change)="updatePrivilege($event)"></mat-slide-toggle></span>
+    </section>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,81 @@
+<header id="header">
+  <!-- Toolbar -->
+  <section class="toolbar d-flex align-items-center justify-content-between">
+    <!-- Admin Details-->
+    <section class="contributor-details d-flex align-items-center justify-content-start">
+      <!-- avatar -->
+      <div class="avatar-placeholder shadow mr-2"></div>
+
+      <!-- Admin details -->
+      <section class="d-flex align-self-center justify-content-center">
+        <p class="contributor">
+          <span class="name pb-1">{{admin.basicInformation!!.name}}</span><br>
+          <span class="account-type">
+            <span class="type-text color-white-faded">{{accountType}}</span>
+          </span>
+        </p>
+      </section>
+    </section>
+
+    <section class="aside d-flex">
+      <!-- Notifications -->
+      <i class="pi pi-bell notifications-icon" (click)="navigateToAnnouncements()" style="font-size: 1.1rem"></i>
+      <!-- <i class="pi pi-ellipsis-v notifications-icon" style="font-size: 1.1rem"></i> -->
+      <!-- <p-menu #menu [model]="menuItems" [popup]="true"></p-menu> -->
+    </section>
+
+
+  </section>
+
+  <!-- balance board -->
+  <section class="balance-board d-flex flex-column align-items-center justify-content-center">
+    <p class="heading">Balance</p>
+    <p class="detail"><span class="amount">{{admin.account!!.balance}}</span><span class="currency">NGN</span></p>
+  </section>
+
+  <!-- Fetch progress spinner -->
+  <section class="d-flex align-items-center justify-content-center">
+    <mat-spinner *ngIf="fetchingAdminData" [diameter]="20" mode="indeterminate"></mat-spinner>
+  </section>
+
+  <!-- Nav items -->
+  <section *ngIf="!fetchingAdminData">
+    <app-nav
+      [mainNavItems]="mainNavItems"
+      [extendedNavItems]="extendedNavItems"
+    ></app-nav>
+  </section>
+
+</header>
+<main class="body shadow">
+
+  <section class="mt-2">
+    <p class="title d-flex align-items-center justify-content-between">Latest Transactions <span (click)="navigateToAllTransactions()" class="btn">Show all</span></p>
+    <section class="latest-trxs">
+
+      <section *ngIf="transactionsHistory.length == 0" class="d-flex p-2 align-items-center justify-content-center">
+        <span class="danger-text">No transactions</span>
+      </section>
+
+      <table *ngIf="transactionsHistory.length > 0" class="mt-3 table table-striped table-borderless">
+        <thead class="thead-dark rounded">
+          <tr class="rounded">
+            <th scope="col">Date</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Statement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr (click)="showTransactionSlip(h._id!!)" class="rounded" *ngFor="let h of transactionsHistory">
+            <td>{{h.date}}</td>
+            <td>{{h.amount}}</td>
+            <td>{{h.statement}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+  </section>
+
+</main>
+<app-footer></app-footer>

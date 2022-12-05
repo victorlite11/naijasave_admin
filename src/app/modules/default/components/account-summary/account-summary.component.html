@@ -1,0 +1,107 @@
+<app-header [title]="'Account Summary'"></app-header>
+
+
+<main class="body shadow pull-up-3">
+    <mat-spinner [diameter]="20" *ngIf="fetchingAccountSummary" mode="indeterminate" class="align-self-center justify-self-center"></mat-spinner>
+
+    <!-- <section class="toolbar d-flex align-items-center">
+      <a class="clickable coral p-2 rounded shadow-sm">Save PDF</a>
+    </section> -->
+
+    <!-- Company account summary -->
+    <section>
+        <p class="title d-flex align-items-center justify-content-between">Company Account Summary</p>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Trading Balance</span>
+        <span class="p-2 d-flex align-items-center">N{{company.account!!.tradingBalance}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+        <span class="p-2">Available Trading Bal.</span>
+        <span class="p-2 d-flex align-items-center">N{{company.account?.availableTradingBalance}}</span>
+    </section>
+
+    <!-- Admins account summary -->
+    <section *ngIf="accountSummary.admins.total > 0">
+        <p class="title d-flex align-items-center justify-content-between">Admins Account Summary</p>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.admins.headAdmin > 0">
+        <span class="p-2">Head admins total</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.admins.headAdmin}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.admins.superAdmin > 0">
+        <span class="p-2">Super admins total</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.admins.superAdmin}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.admins.subAdmin > 0">
+        <span class="p-2">Sub admins total</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.admins.subAdmin}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.admins.total > 0">
+        <span class="p-2 total">Cummulative total</span>
+        <span class="p-2 d-flex align-items-center total">N{{accountSummary.admins.total}}</span>
+    </section>
+
+    <!-- Contributors account summary -->
+    <section *ngIf="accountSummary.contributors.total > 0">
+        <p class="title d-flex align-items-center justify-content-between">Contributors Account Summary</p>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.contributors.contributors > 0">
+        <span class="p-2">Contributors</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.contributors.contributors}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.contributors.investors > 0">
+        <span class="p-2">Investors</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.contributors.investors}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.contributors.subContributors > 0">
+        <span class="p-2">Sub Contributors</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.contributors.subContributors}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.contributors.superContributors > 0">
+        <span class="p-2">Super Contributors</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.contributors.superContributors}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.contributors.total > 0">
+        <span class="p-2 total">Cummulative total</span>
+        <span class="p-2 d-flex align-items-center total">N{{accountSummary.contributors.total}}</span>
+    </section>
+
+    <!-- Commissions account summary -->
+    <section *ngIf="totalCommissionsSummary > 0">
+        <p class="title d-flex align-items-center justify-content-between">Commissions Summary</p>
+    </section>
+ 
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.commissions.company > 0">
+        <span class="p-2">Naijasave</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.commissions.company}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.commissions.subContributors > 0">
+        <span class="p-2">Sub Contributors</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.commissions.subContributors}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="accountSummary.commissions.superContributors > 0">
+        <span class="p-2">Super Contributors</span>
+        <span class="p-2 d-flex align-items-center">N{{accountSummary.commissions.superContributors}}</span>
+    </section>
+
+    <section class="req d-flex align-items-center justify-content-between shadow-sm p-2" *ngIf="totalCommissionsSummary > 0">
+        <span class="p-2 total">Cummulative total</span>
+        <span class="p-2 d-flex align-items-center total">N{{totalCommissionsSummary}}</span>
+    </section>
+
+</main>
+<app-footer></app-footer>

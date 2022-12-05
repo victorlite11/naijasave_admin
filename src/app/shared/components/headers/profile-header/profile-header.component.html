@@ -1,0 +1,66 @@
+<header class='header background-blue big-grey-shadow curved-bottom-point-9em flexed column occupy no-padding align-items-start justify-content-space-between'>
+    <div class="top-bar flexed row occupy no-margin padding-point-5em justify-content-space-between align-items-center">
+        <div class="flexed row no-padding align-items-center">
+            <button class="color-white" mat-icon-button (click)="moveBack()">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <span class='head color-white'>NaijaSave</span>
+        </div>
+        <ul fxLayout='row' fxLayoutGap='20px'>
+            <li>
+                <button class="color-white" mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="signOut()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            Sign out
+                        </button>
+                    </mat-menu>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom-container flexed occupy row justify-self-end padding-left-point-5em justify-content-space-between">
+        <!-- profile -->
+        <div>
+            <div class="flexed column">
+                <!-- placeholder for image -->
+                <div class="image background-yellow"></div>
+                <span class="user-name margin-bottom-point-5em">{{name}}</span>
+            </div>
+            <div class="account-type-container flexed row align-items-center padding-point-2em margin-bottom-point-2em">
+                <!-- account type dot -->
+                <div *ngIf="accountType == 'Head Admin'" class="head-admin-dot away-from-right"></div>
+                <div *ngIf="accountType == 'Super Admin'" class="super-admin-dot away-from-right"></div>
+                <div *ngIf="accountType == 'Sub Admin'" class="sub-admin-dot away-from-right"></div>
+                <div *ngIf="accountType == 'Super Contributor'" class="super-dot away-from-right"></div>
+                <div *ngIf="accountType == 'Sub Contributor'" class="super-dot away-from-right"></div>
+                <div *ngIf="accountType == 'Contributor'" class="super-dot away-from-right"></div>
+                <div *ngIf="accountType == 'Investor'" class="super-dot away-from-right"></div>
+                <span class="type-text color-white-faded">{{accountType}}</span>
+            </div>
+        </div>
+
+        <!-- balance -->
+        <div class="flexed column align-self-end justify-self-end padding-point-5em margin-point-5em align-items-end justify-content-end">
+            <span class="type-text color-white-faded">Balance</span>
+            <span class="balance color-white-faded align-self-end justify-self-end margin-bottom-point-5em">N{{balance}}</span>
+            <span class="type-text color-white-faded">{{otherBalance}}</span>
+            <span class="balance color-white-faded align-self-end justify-self-end">{{amount}}</span>
+        </div>
+    </div>
+</header>
+<!-- <mat-toolbar color='primary'>
+    <mat-toolbar-row>
+
+        
+
+        <div fxFlex fxLayout='row' fxLayoutAlign='flex-end'>
+
+        </div>
+    </mat-toolbar-row>
+
+    <div class="bottom-container">
+
+    </div>
+</mat-toolbar> -->

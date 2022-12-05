@@ -1,0 +1,68 @@
+<app-header [title]="'Personal Data'"></app-header>
+
+<main class="body shadow pull-up-3">
+  <div fxLayout='column' *ngIf="fetchingPersonalData" fxLayoutAlign="center center" class='spinner-container'>
+    <mat-spinner [diameter]="20" mode="indeterminate"></mat-spinner>
+  </div>
+
+    <!--- Basic Information -->
+    <div class="shadow-sm">
+      <p class="p-2">Personal Information</p>
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Name</span>
+        <span class="p-2 d-flex align-items-center">{{admin.basicInformation!!.name}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Username</span>
+        <span class="p-2 d-flex align-items-center">{{admin.credentials!!.username}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Phone Number</span>
+        <span class="p-2 d-flex align-items-center">{{admin.credentials!!.phoneNumber}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Email</span>
+        <span class="p-2 d-flex align-items-center">{{admin.credentials!!.email}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">DOB</span>
+        <span class="p-2 d-flex align-items-center">{{admin.basicInformation!!.dateOfBirth}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Gender</span>
+        <span class="p-2 d-flex align-items-center">{{admin.basicInformation!!.gender}}</span>
+      </section>
+    </div>
+
+    <!--- Address Information -->
+    <div class="shadow-sm mt-2">
+      <p class="p-2">Address Detail</p>
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Nationality</span>
+        <span class="p-2 d-flex align-items-center">{{admin.location!!.country}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">State</span>
+        <span class="p-2 d-flex align-items-center">{{admin.location!!.state}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">LGA</span>
+        <span class="p-2 d-flex align-items-center">{{admin.location!!.localGovernment}}</span>
+      </section>
+
+      <section class="req d-flex align-items-center justify-content-between p-1">
+        <span class="p-2">Address</span>
+        <span class="p-2 d-flex align-items-center">{{admin.location!!.address}}</span>
+      </section>
+    </div>
+
+
+</main>
+<app-footer></app-footer>

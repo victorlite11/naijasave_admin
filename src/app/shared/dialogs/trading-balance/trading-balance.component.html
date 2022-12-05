@@ -1,0 +1,57 @@
+<!-- alert -->
+<app-alert [message]="feedback" [type]="type" *ngIf="feedback != ''"></app-alert>
+
+
+
+
+<app-header [title]="title"></app-header>
+
+<main class="body shadow pull-up-3">
+
+    <section class="toolbar d-flex align-items-center justify-content-end">
+        <p class="key-value-text"><span>Available Balance:</span> <span>{{company.account!!.availableTradingBalance}}NGN</span></p>
+    </section>
+
+    <mat-spinner [diameter]="20" *ngIf="transacting" mode="indeterminate" class="align-self-center justify-self-center"></mat-spinner>
+
+    <!-- Amount -->
+    <section class="form-field d-flex shadow-sm flex-column p-2">
+        <label class="label">Amount</label>
+
+        <section class="input-container d-flex align-items-center">
+            <input [(ngModel)]="amount" type="number" class="input flex-grow-1" placeholder="How much?" />
+        </section>
+
+        <a class="clickable justify-self-end align-self-end text-right">NGN</a>
+    </section>
+
+      <!-- Admin Username -->
+      <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">Username</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input  [(ngModel)]="username" type="text" class="input flex-grow-1" placeholder="Ex: admin-head-Edicha-8385" required />
+          </section>
+      </section>
+
+      <!-- CAP -->
+      <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">CAP</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input  [(ngModel)]="companyAuthorizationPassword" type="text" class="input flex-grow-1" placeholder="Please provide Company Authorization Password" required />
+          </section>
+      </section>
+
+
+  <section class="d-flex align-items-center justify-content-end">
+      <!-- credit button -->
+      <button [disabled]="amount < 10  || username.length == 0 || companyAuthorizationPassword.length == 0" class="main-btn d-flex align-items-center justify-content-center align-self-end justify-self-end shadow mt-3" (click)="fundAdminAccount()">Fund admin</button>
+      <span class="m-2"></span>
+      <!-- debit button -->
+      <button [disabled]="amount < 10  || username.length == 0 || companyAuthorizationPassword.length == 0" class="main-btn d-flex align-items-center justify-content-center danger-bg align-self-end justify-self-end shadow mt-3" (click)="debitAdminAccount()">Debit admin</button>
+
+  </section>
+
+</main>
+<app-footer></app-footer>

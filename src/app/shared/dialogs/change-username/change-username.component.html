@@ -1,0 +1,18 @@
+<div class="occupy padding-point-5em flexed column align-items-center justify-content-center">
+<mat-form-field appearance="fill" class="margin-bottom-point-8em occupy">
+    <mat-label>Change Username</mat-label>
+    <input [(ngModel)]="contributor_username" placeholder="Username" matInput />
+</mat-form-field>
+
+<div class="flexed column padding-point-5em align-self-start">
+          <!-- alert option -->
+    <div class="flexed small-grey-shadow margin-point-2em padding-point-5em background-orange-faded curved-point-5em row justify-content-space-between align-items-center">
+        <span class="color-white-faded">Send SMS Notification</span>
+        <mat-slide-toggle [(ngModel)]="sendSMS"></mat-slide-toggle>
+    </div>
+    <mat-form-field appearance="fill" *ngIf="sendSMS" class="occupy">
+        <textarea [(ngModel)]="proforma.message" minlength="10" placeholder="Notification Message" matInput draggable="false" class="bdi"></textarea>
+    </mat-form-field>
+</div>
+<button mat-raised-button color="warn" class="margin-top-point-8em" (click)="changeUsername()">Continue</button>
+</div>

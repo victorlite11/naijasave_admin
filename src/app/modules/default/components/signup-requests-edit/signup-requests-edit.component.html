@@ -1,0 +1,163 @@
+<!-- alert -->
+<app-alert [message]="feedback" [type]="type" *ngIf="feedback != ''"></app-alert>
+
+
+<app-header [title]="'Update Request'"></app-header>
+
+
+<main class="body shadow pull-up-3">
+
+    <div class="forms-input-container mt-4">
+
+        <!-- Phone Number -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Phone Number</label>
+
+            <section class="input-container d-flex align-items-center">
+               <input [(ngModel)]="signupRequest.phoneNumber" type="number" class="input flex-grow-1" placeholder="Ex : 08155909541" />
+            </section>
+
+        </section>
+
+        <!-- Email -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Email [Optional]</label>
+
+            <section class="input-container d-flex align-items-center">
+               <input [(ngModel)]="signupRequest.email" type="email" class="input flex-grow-1" placeholder="Ex : someone@gmail.com" />
+            </section>
+
+        </section>
+
+        <!-- Account type -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Account Type</label>
+
+            <section class="input-container d-flex align-items-center">
+                <mat-radio-group [(ngModel)]="signupRequest.accountType">
+                  <mat-radio-button value="contributor">Contributor</mat-radio-button>
+                  <mat-radio-button value="investor">Investor</mat-radio-button>
+                </mat-radio-group>
+            </section>
+        </section>
+
+        <!-- Password -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Password</label>
+
+            <section class="input-container d-flex align-items-center">
+               <input [(ngModel)]="signupRequest.password" type="password" class="input flex-grow-1" placeholder="Ex : edy7hse3t42" />
+            </section>
+
+        </section>
+
+        <!-- Full Name -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">Full Name</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input [(ngModel)]="signupRequest.name" type="text" class="input flex-grow-1" placeholder="Ex : Edicha Joshua" />
+          </section>
+
+        </section>
+
+        <!-- Gender -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Gender</label>
+
+            <section class="input-container d-flex align-items-center">
+              <mat-radio-group [(ngModel)]="signupRequest.gender">
+                <mat-radio-button value="male" class="margin-right-point-5em">Male</mat-radio-button>
+                <mat-radio-button value="female" class="margin-right-point-5em">Female</mat-radio-button>
+                <mat-radio-button value="other">Other</mat-radio-button>
+              </mat-radio-group>
+            </section>
+        </section>
+
+        <!-- Date -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Date of Birth</label>
+
+            <section class="input-container d-flex align-items-start">
+              <mat-form-field class="w-100 no-border">
+                <input [(ngModel)]="signupRequest.dateOfBirth" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </section>
+
+        </section>
+
+        <!-- Nationality -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">Nationality</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input [(ngModel)]="signupRequest.country" type="text" class="input flex-grow-1" placeholder="Ex : Nigerian" />
+          </section>
+
+        </section>
+
+        <!-- State -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">State</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input [(ngModel)]="signupRequest.state" type="text" class="input flex-grow-1" placeholder="Ex : Lagos" />
+          </section>
+
+        </section>
+
+        <!-- LGA -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">LGA</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input [(ngModel)]="signupRequest.localGovernment" type="text" class="input flex-grow-1" placeholder="Local Govt. of Origin" />
+          </section>
+
+        </section>
+
+        <!-- Address -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">Address</label>
+
+          <section class="input-container d-flex align-items-center">
+             <textarea [(ngModel)]="signupRequest.address" type="text" class="input no-border flex-grow-1" placeholder="Please provide your residential address"></textarea>
+          </section>
+
+        </section>
+
+        <!-- DailySavings -->
+        <section *ngIf="signupRequest.accountType == 'contributor'" class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">How much will you be saving per day?</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input [(ngModel)]="signupRequest.dailySavings" type="number" class="input flex-grow-1" placeholder="Please provide intended amount" />
+          </section>
+
+        </section>
+
+        <!-- Referral code -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+          <label class="label">Referral Code</label>
+
+          <section class="input-container d-flex align-items-center">
+             <input [(ngModel)]="signupRequest.referrer" type="text" class="input flex-grow-1" placeholder="Provide referral code if any" />
+          </section>
+        </section>
+
+        <mat-spinner [diameter]="20" *ngIf="adding" mode="indeterminate" class="align-self-center justify-self-center"></mat-spinner>
+
+        <section class="d-flex align-items-center justify-content-end">
+          <!-- update button -->
+          <button class="main-btn d-flex align-items-center justify-content-center align-self-end justify-self-end shadow mt-3" (click)="update()">Update</button>
+          <span class="m-2"></span>
+          <!-- create button -->
+          <button class="main-btn d-flex align-items-center justify-content-center align-self-end justify-self-end shadow mt-3" (click)="create()">Create</button>
+    
+      </section>
+      </div>
+
+</main>
+<app-footer></app-footer>

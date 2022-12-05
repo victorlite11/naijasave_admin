@@ -1,0 +1,51 @@
+<!-- Options board -->
+<section *ngIf="mainNavItems.length > 0" class="options-board d-flex flex-wrap align-items-center justify-content-center">
+
+    <app-nav-item
+        *ngFor="let item of mainNavItems"
+        [name]="item.name"
+        [icon]="item.icon"
+        [badge]="item.badge"
+        [display]="item.display"
+        [navData]="item.navData"></app-nav-item>
+
+    <app-nav-item
+        *ngIf="!extendedNavItems.display"
+        (click)="signOut()"
+        [name]="'More'"
+        [icon]="'bars'"
+        data-bs-toggle="collapse" 
+        data-bs-target="#extendedNav"></app-nav-item>
+
+    <app-nav-item
+        *ngIf="extendedNavItems.display"
+        [name]="'More'"
+        [icon]="'bars'"
+        data-bs-toggle="collapse" 
+        data-bs-target="#extendedNav"></app-nav-item>
+
+</section>
+
+<section class="collapse mb-5" id="extendedNav" *ngIf="extendedNavItems.display">
+
+    <section class="options-board d-flex flex-wrap align-items-center justify-content-center">
+
+        <app-nav-item
+            *ngFor="let item of extendedNavItems.navItems"
+            [name]="item.name"
+            [icon]="item.icon"
+            [display]="item.display"
+            [badge]="item.badge"
+            [navData]="item.navData"></app-nav-item>
+
+        <app-nav-item
+            *ngIf="!extendedNavItems.display"
+            (click)="signOut()"
+            [name]="'More'"
+            [icon]="'bars'"
+            data-bs-toggle="collapse" 
+            data-bs-target="#extendedNav"></app-nav-item>
+
+    </section>
+     
+</section>

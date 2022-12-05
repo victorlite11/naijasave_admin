@@ -1,0 +1,93 @@
+.big-btn {
+    padding: .9em;
+    font-size: 1.6em;
+}
+
+.big-btn:nth-child(1) {
+    margin-top: 5px;
+    color: #233d63
+}
+
+.big-btn:nth-child(2) {
+    margin-top: 5px;
+    color: #c20b1b;
+}
+
+
+.ic {
+    mat-icon {
+      font-size: 5em; 
+      color: rgb(31, 113, 219); 
+    }
+    
+}
+
+.bg-1  {
+    background-color: rgb(219, 106, 31);
+}
+.bg-2  {
+    background-color: rgb(207, 219, 31);
+}
+.bg-3  {
+    color: rgb(31, 113, 219);
+}
+.bg-4  {
+    background-color: rgb(219, 31, 178);
+}
+
+.big {
+    font-size: 1.3em;
+}
+
+.big-banner {
+    height: 15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgb(219, 106, 31);
+    text-align: center;
+    color: white;
+    flex-direction: column;
+    .btn-container {
+        margin: 15px;
+        button {
+            margin-left: 6px;
+        }
+    }
+    img {
+        width: 6em;
+        height: 6em;
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+.hail-title {
+    margin-bottom: 6px;
+    font-size: 1em;
+}
+
+.hail-value {
+    font-size: 1.4em;
+}
+
+img {
+    width: 100%;
+    height: 20em;
+    max-width: 30em;
+}
+
+.inner {
+    margin: 20px;
+}
+
+.header-title {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.head {
+    color: white;
+}

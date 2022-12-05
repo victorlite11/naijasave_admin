@@ -1,0 +1,56 @@
+<!-- alert -->
+<app-alert [message]="feedback" [type]="type" *ngIf="feedback != ''"></app-alert>
+
+
+<app-header [title]="title"></app-header>
+
+
+<main class="body shadow pull-up-3">
+
+
+    <section class="form-field d-flex shadow-sm flex-column p-2 flex-wrap">
+        <label class="label">Audience</label>
+
+        <section class="input-container d-flex align-items-center flex-wrap">
+            <mat-checkbox class="p-1" [(ngModel)]="category.general">General</mat-checkbox>
+            <mat-checkbox class="p-1" [(ngModel)]="category.admins">Admins</mat-checkbox>
+            <mat-checkbox class="p-1" [(ngModel)]="category.superContributors">Super Contributors</mat-checkbox>
+            <mat-checkbox class="p-1" [(ngModel)]="category.subContributors">Sub Contributors</mat-checkbox>
+            <mat-checkbox class="p-1" [(ngModel)]="category.investors">Investors</mat-checkbox>
+            <mat-checkbox class="p-1" [(ngModel)]="category.contributors">Contributors</mat-checkbox>
+        </section>
+    </section>
+
+    <form [formGroup]="announcementForm" class="forms-input-container mt-4" (ngSubmit)="announce()">
+        <!-- Title -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Title [Optional]</label>
+
+            <section class="input-container d-flex align-items-center">
+               <input formControlName="title" type="text" class="input flex-grow-1" placeholder="Title" />
+            </section>
+
+        </section>
+
+        <!-- Body -->
+        <section class="form-field d-flex shadow-sm flex-column p-2">
+            <label class="label">Body</label>
+
+            <section class="input-container d-flex align-items-center">
+               <textarea formControlName="body" class="input flex-grow-1 no-border" placeholder="Type here"></textarea>
+            </section>
+
+            <a class="clickable danger-text justify-self-end align-self-end text-right" *ngIf="announcementForm.controls['body'].errors?.required">The body is required</a>
+            <a class="clickable danger-text justify-self-end align-self-end text-right" *ngIf="announcementForm.controls['body'].errors?.minlength">The body is too small</a>
+
+        </section>
+
+        <mat-spinner [diameter]="20" *ngIf="announcing" mode="indeterminate" class="align-self-center justify-self-center"></mat-spinner>
+
+        <!-- button -->
+        <button  [disabled]="announcementForm.invalid" class="main-btn d-flex align-items-center justify-content-center align-self-end justify-self-end shadow mt-3" type="submit">{{btnText}} <i class="pi pi-arrow-right ml-2 pl-2"></i></button>
+
+    </form>
+
+</main>
+<app-footer></app-footer>

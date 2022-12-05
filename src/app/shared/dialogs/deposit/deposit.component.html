@@ -1,0 +1,37 @@
+<mat-toolbar>
+    <span>Deposit</span>
+</mat-toolbar>
+<form [formGroup]="form" class="normal-form" fxLayout="column" (ngSubmit)="deposit()">
+    <mat-form-field>
+        <input type="number" formControlName="deposit" placeholder="Enter Amount" matInput />
+        <mat-error *ngIf="form.controls['deposit'].errors?.required">This field is mandatory</mat-error>
+        <mat-error *ngIf="form.controls['deposit'].errors?.min">Cannot deposit below N10</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input formControlName="name" placeholder="Enter Name" matInput />
+        <mat-error *ngIf="form.controls['name'].errors?.required">This field is mandatory</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input formControlName="transactionDate" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.controls['transactionDate'].errors?.required">This field is mandatory</mat-error>
+    </mat-form-field>
+    <mat-form-field> 
+        <input formControlName="statement" placeholder="Statement" matInput />
+        <mat-error *ngIf="form.controls['statement'].errors?.required">This field is mandatory</mat-error>
+    </mat-form-field>
+    <div fxLayout="row" class='options-bar' fxLayoutAlign="center center">
+        <h4>Purpose </h4>
+        <mat-radio-group formControlName="purpose">
+            <mat-radio-button value="DailySavings">Daily Savings</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center">
+        <mat-spinner [diameter]="30" *ngIf="depositing" mode="indeterminate"></mat-spinner>
+        <button (click)="cancel()" color='warn' mat-raised-button>Cancel</button>
+        <button type="submit" color='primary' [disabled]="form.invalid" mat-raised-button>Deposit</button>
+    </div>
+</form>

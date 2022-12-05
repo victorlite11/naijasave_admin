@@ -1,0 +1,111 @@
+<mat-toolbar color='primary'>
+    <mat-toolbar-row>
+        <span class='head'>NaijaSave</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+<div fxLayout="column">
+    <div class="big-banner">
+        <h1 class="header-title">WELCOME TO HOME OF SAVINGS</h1>
+
+        <div class="btn-container" fxLayout="row" fxLayoutAlign="center">
+            <button mat-raised-button (click)="signup()">Sign up</button>
+            <button mat-raised-button (click)="login()">Log in</button>
+        </div>
+    </div>
+    <mat-card class="option" fxLayout="column" fxLayoutAlign="center">
+        <div class="inner" fxLayout="column" fxLayoutAlign="stretch">
+            <div>
+                <span class='ic'><mat-icon>groups</mat-icon></span>
+            </div>
+            
+            <div class="hail-container" fxLayout="column">
+                <span class='hail-title'>NaijaSave Customers</span>
+                <span class='hail-value'>500+</span>
+            </div> 
+        </div> 
+        <div class="inner" fxLayout="column" fxLayoutAlign="stretch">
+            <div>
+                <span class='ic'><mat-icon>request_quote</mat-icon></span>
+            </div>
+
+            
+            <div class="hail-container" fxLayout="column">
+                <span class='hail-title'>We have processed over</span>
+                <span class='hail-value'>N100,000</span>
+            </div> 
+        </div> 
+        <div class="inner" fxLayout="column" fxLayoutAlign="stretch">
+            <div><span class='ic'><mat-icon>public</mat-icon></span></div>
+            
+            <div class="hail-container" fxLayout="column">
+                <span class='hail-title'>Available Everywhere in</span>
+                <span class='hail-value'>Nigeria</span>
+            </div> 
+        </div> 
+    </mat-card> 
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <img src="../../../assets/naija save 01.jpg" />
+    </div>
+
+    <div class="big-banner">
+        <h1>NAIJASAVE helps save your money easily and almost free.</h1>
+        <h3>All you have to do is to signup</h3>
+        <button mat-raised-button (click)="signup()">Get Started</button>
+    </div>
+    <mat-card class="option" fxLayout="column" fxLayoutAlign="center">
+        <h1>About us</h1>
+        <p>NaijaSave is a subsidiary of AYOMYPO DAMMY NIGERIA ENTERPRISE. A registered company with corporate affairs commission with head office situated at number 29 Liverpool Road, Apapa Lagos.</p>
+        <br>
+        <p>
+            Tell: 09021697229
+            Whatsapp: 08136194094
+        </p>
+    </mat-card>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <img src="../../../assets/naija save004.jpg" />
+    </div>
+    
+    <mat-card class="option" fxLayout="column">
+        <div class="inner" fxLayout="column" fxLayoutAlign="stretch">
+            <div>
+                <span class='ic'><mat-icon>groups</mat-icon></span>
+            </div>
+            
+            <div class="hail-container" fxLayout="column">
+                <p class='hail-title bg-3 big'>NaijaSave is Trusted</p>
+                <p class=''>We’re early industry pioneers and have 
+                    been around with savings experience, successfully processed more than huge amount of
+                    transactions and have happy customers in over all over the country.</p>
+            </div> 
+        </div> 
+
+        <div class="inner" fxLayout="column">
+            <div>
+                <span class='ic'><mat-icon>face</mat-icon></span>
+            </div>
+            
+            <div class="hail-container" fxLayout="column">
+                <p class='hail-title bg-3 big'>NaijaSave is for you</p>
+                <p class=''>Many people like us. From ease in deposit and withdrawals to monitoring your savings on your dashboard, we make your Saving experience the best one.</p>
+            </div> 
+        </div> 
+
+        <div class="inner" fxLayout="column">
+            <div>
+                <span class='ic'><mat-icon>lock</mat-icon></span>
+            </div>
+            
+            <div class="hail-container" fxLayout="column">
+                <p class='hail-title bg-3 big'>NaijaSave is Secure</p>
+                <p class=''>When we mean security, we say your money is safe. We’ve built much security and profound transactions recording strategies.</p>
+            </div> 
+        </div> 
+    </mat-card>
+
+    <mat-card>
+        <p class="center">&copy; Copyright NaijaSave</p>
+        <div fxLayout="column">
+            <a [routerLink]="['/termsandconditions']">Our Terms and Conditions</a>
+        </div>
+    </mat-card>
+</div>

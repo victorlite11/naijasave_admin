@@ -1,0 +1,47 @@
+<app-header [title]="title"></app-header>
+
+<main class="body shadow pull-up-3">
+    <mat-spinner *ngIf="fetchingSms" [diameter]="20" mode="indeterminate"></mat-spinner>
+
+  <section class="d-flex flex-column shadow-sm p-2">
+
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="SMS Proformas">
+            <section class="toolbar d-flex align-items-center">
+        
+                <a class="clickable coral p-2 rounded shadow-sm m-1" (click)="navigateToCreateSMSProforma()">Create SMS Proforma</a>
+
+            </section>
+
+            <app-sms-proforma-card
+            [for_]="proforma.for"
+            [message]="proforma.message"
+            [_id]="proforma._id"
+            *ngFor="let proforma of smsProformas"></app-sms-proforma-card>
+        </mat-tab>
+        <mat-tab label="Settings">
+
+            <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+                <span class="p-2">Deposit Requests SMS Notifications</span>
+                <span class="p-2 d-flex align-items-center"><mat-slide-toggle (change)="updateCompanyData($event)" [(ngModel)]="companySettings.depositRequestsSMSNotification"></mat-slide-toggle></span>
+            </section>
+
+            <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+                <span class="p-2">Withdrawal Requests SMS Notifications</span>
+                <span class="p-2 d-flex align-items-center"><mat-slide-toggle (change)="updateCompanyData($event)" [(ngModel)]="companySettings.withdrawalRequestsSMSNotification"></mat-slide-toggle></span>
+            </section>
+
+            <section class="req d-flex align-items-center justify-content-between shadow-sm p-2">
+                <span class="p-2">Signup Requests Approval Notifications</span>
+                <span class="p-2 d-flex align-items-center"><mat-slide-toggle (change)="updateCompanyData($event)" [(ngModel)]="companySettings.signupRequestsApprovalSMSNotification"></mat-slide-toggle></span>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
+  </section>
+</main>
+<app-footer></app-footer>
+
+
+
+
+       

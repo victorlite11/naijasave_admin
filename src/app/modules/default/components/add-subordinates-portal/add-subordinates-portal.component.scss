@@ -1,0 +1,27 @@
+* {
+    transition: all .4s ease-in-out;
+}
+
+.subordinate-card {
+    transition: all .4s ease-in-out;
+}
+
+.faint-border {
+    border: .8px solid rgba(194, 46, 20, 0.596);
+    border-radius: .7em;
+}
+
+a.clickable {
+    font-size: .9em;
+    cursor: pointer;
+    text-align: end;
+    font-family: source-sans-pro-regular;
+    text-decoration: none;
+    color : #f55f5fd2;
+    padding: .8em;
+}
+
+.check-icon {
+    padding: .4em;
+    color: #b9babbd7;
+}

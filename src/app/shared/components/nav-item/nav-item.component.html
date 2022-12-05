@@ -1,0 +1,8 @@
+<div (click)="navigate()" *ngIf="display" class="option d-flex align-items-center justify-content-center flex-column">
+    <div class="icon-holder d-flex align-items-center justify-content-center shadow-sm">
+        <span class="badge" *ngIf="badge.display">{{badge.content}}</span>
+
+        <i class="pi pi-{{icon}}" style="font-size: 1.1rem"></i>
+    </div>
+    <p class="description">{{name}}</p>
+</div>

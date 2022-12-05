@@ -1,0 +1,39 @@
+.option {
+    padding: .6em;
+    margin: .4em;
+    margin-top: 2em;
+    width: 4em;
+    height: 4em;
+    .icon-holder {
+        background-color: #94cef480;
+        border-radius: 20%;
+        position: relative;
+        padding: 1em;
+        * {
+            font-size: .6em;
+        }
+
+        span.badge {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            display: flex;
+            font-size: .7em;
+            align-items: center;
+            justify-content: center;
+            margin: .2em;
+            padding: .7em;
+            font-family: source-sans-pro-light;
+            border-radius: 5%;
+            color: rgb(250, 238, 77);
+            //color: #208bd3;
+        }
+    }
+
+    p.description {
+        font-size: .9em;
+        color: rgba(255, 255, 255, 0.699);
+        font-family: source-sans-pro-light;
+        margin-top: .3em;
+    }
+}

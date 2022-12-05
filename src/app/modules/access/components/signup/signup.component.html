@@ -1,0 +1,155 @@
+<mat-toolbar color='primary'>
+  <mat-toolbar-row>
+      <button class="head" *ngIf="navigated" mat-icon-button (click)="moveBack()">
+          <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <span class='head'>NaijaSave</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-toolbar>
+            <span>Sign up</span>
+        </mat-toolbar> 
+          <p>If you already have an account, please <a [routerLink]="['/access']">Sign in</a></p>
+          <mat-vertical-stepper [linear]="true" #stepper>
+            <!-- Account Details-->
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup" fxLayout="column">
+                <ng-template matStepLabel>Account Details</ng-template>
+                <mat-form-field>
+                  <mat-label>Phone number</mat-label>
+                  <input matInput placeholder="Phone number" formControlName="phoneNumber">
+                  <mat-error *ngIf="firstFormGroup.controls['phoneNumber'].errors?.required">This field is mandatory</mat-error>
+                  <mat-error *ngIf="firstFormGroup.controls['phoneNumber'].errors?.minlength">Invalid phone number provided (must be 11 digits)</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="Email (Optional)" formControlName="email">
+                </mat-form-field>
+                <!-- username 
+                <mat-form-field>
+                  <mat-label>Username</mat-label>
+                  <input matInput placeholder="Username" formControlName="username" required>
+                  <mat-error *ngIf="firstFormGroup.controls['username'].errors?.required">This field is mandatory</mat-error>
+                </mat-form-field> -->
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" placeholder="Password" formControlName="password">
+                    <mat-error *ngIf="firstFormGroup.controls['password'].errors?.required">This field is mandatory</mat-error>
+                    <mat-error *ngIf="firstFormGroup.controls['password'].errors?.minlength">Mininum of 6 characters required</mat-error>
+                </mat-form-field>
+                <h5>Choose Account Type</h5>
+                <mat-radio-group formControlName="accountType">
+                    <mat-radio-button value="contributor">Savings</mat-radio-button>
+                    <mat-radio-button value="investor">Investor</mat-radio-button>
+                </mat-radio-group>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-raised-button [disabled]="firstFormGroup.invalid" matStepperNext (click)="nextFormOne()">Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- personal information -->
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup" fxLayout="column">
+                <ng-template matStepLabel>Personal Information</ng-template>
+                <mat-form-field>
+                  <mat-label>Full Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Full Name" required>
+                </mat-form-field>
+                <span>*Note: Full Name must match the name on your bank account to be able to withdraw through banking method</span>
+                <!-- date of birth -->
+                <mat-form-field appearance="fill">
+                  <mat-label>Date of Birth</mat-label>
+                  <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Next of Kin</mat-label>
+                  <input matInput formControlName="nextOfKin" placeholder="Next of Kin" required>
+                </mat-form-field>
+                <h5>Choose Gender</h5>
+                <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                    <mat-radio-button value="other">Other</mat-radio-button>
+                </mat-radio-group>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button [disabled]="secondFormGroup.invalid" matStepperNext (click)="nextFormTwo()">Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- identity -->
+            <mat-step [stepControl]="identityFormGroup">
+              <form [formGroup]="identityFormGroup" fxLayout="column">
+                <ng-template matStepLabel>Identity</ng-template>
+                <mat-form-field>
+                  <mat-label>Country</mat-label>
+                  <input matInput formControlName="nationality" placeholder="Country" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>State</mat-label>
+                    <input matInput formControlName="state" placeholder="State" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Local Government</mat-label>
+                  <input matInput formControlName="localGovernment" placeholder="Local Government" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="address" placeholder="Ex. 2nd Street, Apapa Lagos" required>
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button [disabled]="identityFormGroup.invalid" matStepperNext (click)="nextFormIdentity()">Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- Savings -->
+            <mat-step [stepControl]="savingsFormGroup">
+              <form [formGroup]="savingsFormGroup" fxLayout="column">
+                <ng-template matStepLabel>Savings</ng-template>
+                <h4>How much are you willing to deposit per day?</h4>
+                <mat-form-field>
+                  <mat-label>Daily Savings</mat-label>
+                  <input matInput type="number" formControlName="dailySavings" placeholder="Daily Savings" required>
+                  <mat-error *ngIf="savingsFormGroup.controls['dailySavings'].errors?.min">Mininmum amount of N100 allowed</mat-error>
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-raised-button matStepperPrevious>Back</button>
+                  <button mat-raised-button [disabled]="savingsFormGroup.invalid" matStepperNext (click)="nextFormSavings()">Next</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- Done -->
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <form [formGroup]="referralFormGroup" fxLayout="column">
+                <mat-form-field>
+                  <mat-label>Invitation Code</mat-label>
+                  <input matInput formControlName="referrerPhoneNumber" placeholder="Invitation Code">
+                </mat-form-field>
+              </form>
+              
+
+              <p>By clicking signup, you hereby read and accept our <a [routerLink]="['/termsandconditions']">Terms & Conditions</a></p>
+
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <mat-spinner *ngIf="signingUp" [diameter]="20" mode="indeterminate"></mat-spinner>
+                <button mat-raised-button matStepperPrevious>Back</button>
+                <button mat-raised-button (click)="signup()">Signup</button>
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+    </mat-card>
+</div>
+
+<app-footer></app-footer>

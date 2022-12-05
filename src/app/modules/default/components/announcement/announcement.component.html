@@ -1,0 +1,26 @@
+<app-header [title]="title"></app-header>
+
+<main class="body shadow pull-up-3">
+    <mat-spinner *ngIf="fetchingAnnouncements" [diameter]="20" mode="indeterminate"></mat-spinner>
+
+    <section class="toolbar d-flex align-items-center justify-content-end">
+      <p class="key-value-text"><span>Total Notifications:</span> <span>{{announcements.length}}</span></p>
+  </section>
+
+  <section class="toolbar d-flex align-items-center">
+        
+    <a class="clickable p-2 rounded shadow-sm" (click)="createNewAnnouncement()">Create Notification</a>
+  </section>
+
+  <section class="d-flex flex-column shadow-sm p-2">
+    <div *ngFor="let announcement of announcements">
+        <app-announcement-card [title]="announcement.title" 
+                                [body]="announcement.body" 
+                                [_id]="announcement._id"
+                                [date]="announcement.date"
+                                (delete)="deleteAnnouncement($event)"></app-announcement-card>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
+

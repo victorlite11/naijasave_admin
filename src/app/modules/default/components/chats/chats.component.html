@@ -1,0 +1,22 @@
+<app-header [title]="'Conversations'"></app-header>
+
+<main class="body shadow pull-up-3">
+
+    <section>
+        <div class="d-flex column occupy" *ngFor="let chat of chats">
+            <span *ngIf="chat.from != admin._id" class="m-1 p-2 text-wrap shadow-sm rounded primary-text align-self-start w-50">{{chat.message}}</span>
+            <span *ngIf="chat.from == admin._id" class="m-1 p-2 text-wrap shadow-sm rounded align-self-end w-50">{{chat.message}}</span>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="d-flex fixed-bottom m-2 align-items-center">
+            <textarea [(ngModel)]="chat.message" placeholder="Type message..." class="w-100 mr-1 shadow text-box p-2"></textarea>
+            <div class="padding-left-point-8em"></div> <!-- gap -->
+            <button (click)="send()" class="main-btn d-flex align-items-center justify-content-center align-self-end justify-self-end shadow" type="submit">Send <i class="pi pi-arrow-right ml-2 pl-2"></i></button>
+        </div>
+    </section>
+
+</main>
+<app-footer></app-footer>

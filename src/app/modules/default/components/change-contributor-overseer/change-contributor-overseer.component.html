@@ -1,0 +1,59 @@
+<!-- alert -->
+<app-alert [message]="feedback" [type]="type" *ngIf="feedback != ''"></app-alert>
+
+
+<app-header [title]="title"></app-header>
+
+<main class="body shadow pull-up-3">
+    <mat-spinner *ngIf="updatingOverseer || fetchingOverseers" [diameter]="20" mode="indeterminate"></mat-spinner>
+
+    <section class="toolbar d-flex align-items-center justify-content-end">
+      <p class="key-value-text"><span>Overseer:</span> <span>{{contributor.basicInformation!!.overseerId}}</span></p>
+  </section>
+
+  <section class="mt-2">
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="Admins">
+            <!-- Admins -->
+            <div class="flexed column padding-point-5em">
+                <app-admin-card  *ngFor="let admin of admins" 
+                (click)="updateOverseer(admin._id!!)"
+                [name]="admin.basicInformation!!.name"
+                [username]="admin.credentials!!.username"></app-admin-card>
+            </div>
+        </mat-tab>
+        <mat-tab label="Super/Sub Contributors">
+            <!-- superContributor or SubContributor Contributors -->
+            <div class="flexed column padding-point-5em">
+                <app-contributor-card class="occupy" *ngFor="let contributor of contributors" 
+                (click)="updateOverseer(contributor._id!!)"
+                [name]="contributor.basicInformation!!.name"
+                [status]="contributor.activities!!.status"
+                [phoneNumber]="contributor.credentials!!.phoneNumber"></app-contributor-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+  </section>
+</main>
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+<app-counts-header
+[count]="contributor.basicInformation!!.overseerId"
+[title]="title"
+[name]="name"
+[sub_text]="sub_text"
+></app-counts-header>
+<div class="flexed align-items-center justify-content-center padding-point-8em">
+    <mat-spinner *ngIf="updatingOverseer || fetchingOverseers" [diameter]="20" mode="indeterminate"></mat-spinner>
+</div>
+
+
+
+       

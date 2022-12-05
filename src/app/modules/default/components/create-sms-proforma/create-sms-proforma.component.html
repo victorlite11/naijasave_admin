@@ -1,0 +1,44 @@
+<!-- alert -->
+<app-alert [message]="feedback" [type]="type" *ngIf="feedback != ''"></app-alert>
+
+
+<app-header [title]="title"></app-header>
+
+
+<main class="body shadow pull-up-3">
+
+    <section class="form-field d-flex shadow-sm flex-column p-2 flex-wrap">
+        <label class="label">Type</label>
+
+        <section class="input-container d-flex align-items-center flex-wrap">
+            <mat-radio-group [(ngModel)]="smsProforma.for">
+                <mat-radio-button value="account-change" class="margin-point-5em">Account Change SMS</mat-radio-button>
+                <mat-radio-button value="daily-savings" class="margin-point-5em">Daily Savings SMS</mat-radio-button>
+                <mat-radio-button value="debits" class="margin-point-5em">Debit SMS</mat-radio-button>
+                <mat-radio-button value="credits" class="margin-point-5em">Credit SMS</mat-radio-button>
+                <mat-radio-button value="signups" class="margin-point-5em">Signup SMS</mat-radio-button>
+                <mat-radio-button value="deposit-requests" class="margin-point-5em">Deposit Requests SMS</mat-radio-button>
+                <mat-radio-button value="withdrawal-requests" class="margin-point-5em">Withdrawal Requests SMS</mat-radio-button>
+            </mat-radio-group>
+        </section>
+    </section>
+
+
+    <!-- message -->
+    <section class="form-field d-flex shadow-sm flex-column p-2">
+        <label class="label">Message</label>
+
+        <section class="input-container d-flex align-items-center">
+            <textarea draggable="false" [(ngModel)]="smsProforma.message" class="input flex-grow-1 bdi no-border" placeholder="Type the message here" minlength="10"></textarea>
+        </section>
+
+    </section>
+
+    <mat-spinner *ngIf="creating" [diameter]="20" mode="indeterminate"></mat-spinner>
+    
+    <!-- button -->
+    <button  [disabled]="smsProforma.message.length < 5" class="main-btn d-flex align-items-center justify-content-center align-self-end justify-self-end shadow mt-3" (click)="create()">{{btnText}} <i class="pi pi-arrow-right ml-2 pl-2"></i></button>
+
+</main>
+<app-footer></app-footer>
+
